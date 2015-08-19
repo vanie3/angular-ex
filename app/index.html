@@ -13,12 +13,14 @@
         </div>
         <div ng-repeat="user in users">
             <p>{{ user.userName }}'s password is {{ user.password }}</p>
-            <p>Age: {{ user.age }}</p>
+        </div>
+        <div>
+            {{oneUser.userName}}
         </div>
     </div>
 
     <div ng-controller="NewController">
-        <p ng-repeat="user in users">{{ user.name }} is {{ user.age }} years old</p>
+        <p ng-repeat="user in people">{{ user.name }} is {{ user.age }} years old {{  user.userName }}</p>
     </div>
 
     <script src="../node_modules/angular/angular.min.js"></script>

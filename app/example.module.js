@@ -6,7 +6,11 @@
 
     app.config(function() {});
 
-    app.controller ('HomeController', function($scope) {
+    app.controller ('HomeController', function($scope, UsersService) {
+
+
+        $scope.oneUser = UsersService.find(1);
+
         $scope.hello = "Hello World";
 
         $scope.numbers = [12, 28, 43, 4];
@@ -14,23 +18,22 @@
         $scope.users = [
             {
                 userName: "soccerChild10",
-                password: "jello",
-                age: 20
+                password: "jello"
             },
             {
                 userName: "spiderman8",
-                password: "cat",
-                age: 34
+                password: "cat"
             },
             {
                 userName: "crazyKid123",
-                password: "dog",
-                age: 2
+                password: "dog"
             }
         ];
     });
 
-    app.controller ('NewController', function($scope) {
+    app.controller ('NewController', function($scope, UsersService) {
+
+        $scope.people = UsersService.users;
 
         $scope.users = [
             {
@@ -48,4 +51,61 @@
         ];
     });
 
+    app.service('UsersService', function() {
+        var people = [
+            {
+                userName: "Jill",
+                email:"jill@gmail.com",
+                id: 1
+            },
+            {
+                userName: "Mark",
+                email:"mark@yahoo.com",
+                id: 2
+            },
+            {
+                userName: "Debby",
+                email:"debs@hotmail.com",
+                id: 3
+            }
+        ];
+
+        function find(id) {
+            var foundUser;
+
+            people.forEach(function(person) {
+                if(person.id === id) {
+                    foundUser = person;
+                }
+            });
+
+            return foundUser;
+        }
+
+        return {
+            users: people,
+            find: find
+        };
+    });
+
 }());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
