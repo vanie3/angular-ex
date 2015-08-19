@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" ng-app="example">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular</title>
+</head>
+<body>
+
+    <div ng-controller="HomeController">
+        <h1>{{ hello }}</h1>
+        <div ng-repeat="number in numbers">
+            {{ number }}
+        </div>
+        <div ng-repeat="user in users">
+            <p>{{ user.userName }}'s password is {{ user.password }}</p>
+            <p>Age: {{ user.age }}</p>
+        </div>
+    </div>
+
+    <div ng-controller="NewController">
+        <p ng-repeat="user in users">{{ user.name }} is {{ user.age }} years old</p>
+    </div>
+
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="example.module.js"></script>
+
+</body>
+</html>
